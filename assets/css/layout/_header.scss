@@ -1,0 +1,197 @@
+/* header styles begin */
+#header{
+	margin: 0 auto;
+	max-width: 1024px;
+	padding-top: 24px;
+	&:after{
+		content: '';
+		display: block;
+		clear: both;
+	  }
+	.logo{
+		margin: 0 0 21px 28px;
+		float: left;
+		width: 178px;
+		height: 44px;
+		background: url(../images/logo.png) no-repeat;
+		text-indent: -9999px;
+		overflow: hidden;
+		a{
+			display: block;
+			height: 100%;
+		}
+	}
+}
+/* navigation */
+#nav{
+	margin: 9px 20px 0 0;
+	float: right;
+	li{
+		margin-left: 28px;
+		float: left;
+	}
+	a{
+		float: left;
+		padding: 14px 4px 16px;
+		font-size: 20px;
+		line-height: 26px;
+		color: #6c6c6c;
+		background: linear-gradient(to right, #5094f2, #5094f2) no-repeat 50% 100%;
+		background: -webkit-linear-gradient(left, #5094f2, #5094f2) no-repeat 50% 100%;
+		background: -moz-linear-gradient(left, #5094f2, #5094f2) no-repeat 50% 100%;
+		background: -ms-linear-gradient(left, #5094f2, #5094f2) no-repeat 50% 100%;
+		background: -o-linear-gradient(left, #5094f2, #5094f2) no-repeat 50% 100%;
+		background-size: 0 3px;
+		@include transition(all, 0.5s);
+	}
+	.active a, a:hover{background-size: 100% 3px;}
+}
+#header .menu-opener{display: none;}
+/* mobile header styles */
+@media only screen and (max-width: 760px){
+	#header{
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 100%;
+		padding: 11px 0 8px;
+		background: #fff;
+		z-index: 20;
+		@include transition(right, 0.5s);
+		box-shadow: 0 1px rgba(0, 0, 0, 0.3);
+		-webkit-box-shadow: 0 1px rgba(0, 0, 0, 0.3);
+		z-index: 200;
+		.logo{
+			margin: 0 0 0 15px;
+			width: 104px;
+			height: 26px;
+			background-size: 104px 26px;
+		}
+		.menu-opener{
+			display: block;
+			float: right;
+			margin: 2px 13px 0 0;
+			width: 30px;
+			height: 23px;
+			background: #5094f2;
+			border-radius: 3px;
+			position: relative;
+			overflow: hidden;
+			span{
+				display: block;
+				position: absolute;
+				top: 10px;
+				left: 5px;
+				right: 5px;
+				height: 3px;
+				background: #fff;
+				@include transition-bg(background, 0s, .3s);
+				opacity: 1;
+				text-indent: -9999px;
+				&:after{
+					@include transition-duration(.3s, .3s);
+					@include transition-delay(.3s, 0s);
+					position: absolute;
+					left: 0;
+					width: 100%;
+					height: 3px;
+					background-color: #fff;
+					content: "";
+					-webkit-transition-property: bottom, -webkit-transform;
+					-moz-transition-property: bottom, -moz-transform;
+					-o-transition-property: bottom, -o-transform;
+					transition-property: bottom, transform;
+					bottom: -6px;
+				}
+				&:before{
+					@include transition-duration(.3s, .3s);
+					@include transition-delay(.3s, 0s);
+					position: absolute;
+					left: 0;
+					width: 100%;
+					height: 3px;
+					background-color: #fff;
+					content: "";
+					-webkit-transition-property: top, -webkit-transform;
+					-moz-transition-property: top, -moz-transform;
+					-o-transition-property: top, -o-transform;
+					transition-property: top, transform;
+					top: -6px;
+				}
+			}
+		}
+	}
+	.nav-visible #header{right: $mobile-nav-width;}
+	.nav-visible #header .menu-opener{
+		span{
+			background: none;
+			opacity: 1;
+			&:after {
+				@include transition-delay(0s, .3s);
+			}
+			&:before {
+				@include transition-delay(0s, .3s);
+				top: 0;
+				@include rotate(135deg)
+				background: #fff;
+				@include transition(all, 0.3s);
+			}
+		}
+		&:hover span:before{
+			@include rotate(45deg)
+		}
+		span:after{
+			bottom: 0;
+			@include rotate(-135deg)
+			background: #fff;
+			@include transition(all, 0.3s);
+		}
+		&:hover span:after{
+			@include rotate(-45deg)
+		}
+	}
+	.nav-visible{
+		#nav{right: 0;}
+		#wrapper{right: $mobile-nav-width;}
+	}
+	#nav{
+		position: fixed;
+		margin: 0;
+		float: none;
+		top: 0;
+		right: -$mobile-nav-width;
+		@include box-sizing;
+		width: $mobile-nav-width;
+		height: 100%;
+		padding: 20px;
+		background: #fff;
+		@include transition(right, 0.5s);
+		box-shadow: 3px 0 3px rgba(0, 0, 0, 0.1) inset;
+		-webkit-box-shadow: 3px 0 3px rgba(0, 0, 0, 0.1) inset;
+		z-index: 900;
+		li{
+			margin: 0 0 15px;
+			float: none;
+		}
+		a{
+			float: none;
+			display: block;
+			padding: 5px;
+			border-radius: 3px;
+			background: $link-color;
+			color: #fff;
+			font-size: 15px;
+			line-height: 20px;
+			text-align: center;
+			&:hover {
+				box-shadow: 0 0 5px 1px rgba(80, 148, 242, 0.7);
+				-webkit-box-shadow: 0 0 5px 1px rgba(80, 148, 242, 0.7);
+			}
+		}
+		.active a{
+			box-shadow: 0 0 5px 1px rgba(80, 148, 242, 0.7);
+			-webkit-box-shadow: 0 0 5px 1px rgba(80, 148, 242, 0.7);
+		}
+	}
+}
+/* header styles end */

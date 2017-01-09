@@ -1,0 +1,37 @@
+// mixins
+@mixin box-sizing{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+@mixin transition($style, $time){
+	-webkit-transition: $style $time ease;
+	-moz-transition: $style $time ease;
+	-o-transition: $style $time ease;
+	transition: $style $time ease;
+}
+@mixin transition-bg($style, $time1, $time2){
+	-webkit-transition: $style $time1 $time2;
+	-moz-transition: $style $time1 $time2;
+	-o-transition: $style $time1 $time2;
+	transition: $style $time1 $time2;
+}
+@mixin transition-duration($time1, $time2){
+	-webkit-transition-duration: $time1,$time2;
+	-moz-transition-duration: $time1,$time2;
+	-o-transition-duration: $time1,$time2;
+	transition-duration: $time1,$time2;
+}
+@mixin transition-delay($time1, $time2){
+	-webkit-transition-delay: $time1,$time2;
+	-moz-transition-delay: $time1,$time2;
+	-o-transition-delay: $time1,$time2;
+	transition-delay: $time1,$time2;
+}
+@mixin rotate($deg){
+	-webkit-transform: rotate($deg);
+	-moz-transform: rotate($deg);
+	-o-transform: rotate($deg);
+	-ms-transform: rotate($deg);
+	transform: rotate($deg);
+}
